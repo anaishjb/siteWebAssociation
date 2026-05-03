@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Actions solidaires de LDS Association" />
+  <title>LDS Association - Actions solidaires</title>
+  <link rel="stylesheet" href="actionsSol.css" />
+</head>
+
+<body id="top">
+
+  <a href="#contenu-principal" class="skip-link">Aller au contenu principal</a>
+
+  <header class="site-header">
+    <div class="header-wrapper">
+      <div class="logo-container">
+        <a href="index.html" aria-label="Retour à l'accueil">
+          <img src="images/Logolds.jpg" alt="Logo de LDS Association" class="logo" />
+        </a>
+      </div>
+
+      <div class="nav-container">
+        <nav class="main-nav" aria-label="Navigation principale">
+          <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu"
+            aria-label="Ouvrir le menu">
+            ☰
+          </button>
+
+          <ul class="nav-list" id="main-menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="QuiSommesNs.html">Qui sommes nous</a></li>
+            <li><a href="evenements.html">Événements</a></li>
+            <li class="has-submenu">
+              <a href="actions_solidaires.html" class="active" aria-current="page">
+                Actions solidaires
+              </a>
+
+              <ul class="submenu">
+                <li><a href="missions.html">Nos missions</a></li>
+                <li><a href="partenaires.html">Nos partenaires</a></li>
+              </ul>
+            </li>
+
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="don.html">Don</a></li>
+          </ul>
+        </nav>
+
+        <div class="accessibility">
+          <button type="button" id="accessibility-btn" class="accessibility-btn" aria-expanded="false"
+            aria-controls="accessibility-panel">
+            Accessibilité
+          </button>
+
+          <div id="accessibility-panel" class="accessibility-panel" hidden>
+            <button type="button" id="increase-font">Agrandir A+</button>
+            <button type="button" id="reset-font">Taille normale A</button>
+            <button type="button" id="decrease-font">Réduire A-</button>
+
+            <button type="button" id="reset-spacing">Réinitialiser espacement</button>
+            <input type="range" id="spacing-range" min="0" max="0.2" step="0.01" value="0"
+              aria-label="Régler l'espacement des caractères" />
+
+            <label for="font-choice">Police</label>
+            <select id="font-choice">
+              <option value="Arial">Arial</option>
+              <option value="Verdana">Verdana</option>
+              <option value="Tahoma">Tahoma</option>
+              <option value="Georgia">Georgia</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu-principal">
+
+    <section class="section intro-section">
+      <div class="container intro-grid">
+        <div class="intro-image">
+          <img src="images/image1.jpeg" alt="Bénévoles lors d'une action solidaire" />
+        </div>
+
+        <div class="intro-text">
+          <h1>Actions solidaires</h1>
+          <p>
+            Grâce aux fonds collectés lors de nos événements, nous menons des actions
+            concrètes au quotidien pour soutenir les familles et les personnes
+            vulnérables de Tremblay-en-France et des communes voisines.
+          </p>
+
+          <nav class="intro-links" aria-label="Sous-pages des actions solidaires">
+            <ul>
+              <li>
+                <a href="missions.html" class="intro-btn">Nos missions</a>
+              </li>
+              <li>
+                <a href="partenaires.html" class="intro-btn">Nos partenaires</a>
+              </li>
+            </ul>
+          </nav>
+
+
+          <p class="citation">
+            “On ne peut pas aider tout le monde, mais tout le monde peut aider quelqu’un.”
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="section" aria-labelledby="titre-actions">
+      <div class="container narrow">
+        <h2 id="titre-actions">Ce que nous faisons concrètement</h2>
+
+        <article class="action-item">
+          <div class="action-title">
+            <h3>Maraude mensuelle</h3>
+          </div>
+          <div class="action-text">
+            <p>
+              Chaque dernier samedi du mois, nous sillonnons les rues pour distribuer
+              des repas chauds, des vêtements et des produits d’hygiène aux personnes sans-abri.
+            </p>
+          </div>
+        </article>
+
+        <article class="action-item">
+          <div class="action-title">
+            <h3>Shopping solidaire</h3>
+          </div>
+          <div class="action-text">
+            <p>
+              Deux fois par an, nous ouvrons nos portes aux familles dans le besoin
+              orientées par les services sociaux municipaux. Chaque famille repart
+              gratuitement avec des vêtements, un kit d’hygiène et un colis alimentaire.
+            </p>
+          </div>
+        </article>
+
+        <article class="action-item">
+          <div class="action-title">
+            <h3>Fournitures scolaires — Collège René Descartes</h3>
+          </div>
+          <div class="action-text">
+            <p>
+              En partenariat avec le collège René Descartes, nous fournissons du
+              matériel scolaire aux élèves qui en ont besoin tout au long de l’année.
+            </p>
+          </div>
+        </article>
+
+        <article class="action-item">
+          <div class="action-title">
+            <h3>Actions du quotidien</h3>
+          </div>
+          <div class="action-text">
+            <p>
+              Des petites actions qui font une grande différence : faire les courses
+              pour une personne à mobilité réduite, prêter du matériel, venir en aide
+              à un enfant dont la famille n’a pas les moyens, ou simplement apporter
+              un soutien concret.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section missions-section" aria-labelledby="titre-missions">
+      <div class="container">
+        <h2 id="titre-missions">Nos missions</h2>
+
+        <div class="missions-grid">
+          <article class="mission-card">
+            <h3>Ce que nous distribuons</h3>
+            <ul>
+              <li>Repas chauds et colis alimentaires</li>
+              <li>Vêtements triés et sélectionnés</li>
+              <li>Kits d’hygiène</li>
+              <li>Fournitures scolaires</li>
+              <li>Jouets pour enfants</li>
+              <li>Meubles</li>
+            </ul>
+          </article>
+
+          <article class="mission-card">
+            <h3>Les personnes que nous aidons</h3>
+            <ul>
+              <li>Familles sous le seuil de pauvreté</li>
+              <li>Personnes en grande précarité</li>
+              <li>Élèves en difficulté financière</li>
+              <li>Habitants de Tremblay, Sevran, Aulnay-sous-Bois, Villepinte…</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <section class="footer-block">
+        <h2 class="footer-title">LDS Association</h2>
+        <p>Ligue des Souvenirs (LDS)</p>
+        <p>Association loi 1901</p>
+        <p>Créée le 13/02/2024</p>
+      </section>
+
+      <section class="footer-block">
+        <h2 class="footer-title">Adresse</h2>
+        <address>
+          5 rue Nicolas Copernic<br />
+          93290 Tremblay-en-France<br />
+          France
+        </address>
+      </section>
+
+      <div class="footer-block footer-top-button">
+        <button type="button" id="back-to-top" aria-label="Remonter en haut de page">
+          ↑ Haut
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="actionsSol.js"></script>
+</body>
+
+</html>
