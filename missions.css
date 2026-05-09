@@ -209,36 +209,43 @@ body.font-georgia {
 
 /* Fil d'Ariane */
 .breadcrumb {
-  background: #222;
-  color: white;
-  padding: 0.6rem 1rem;
-  font-size: 0.95rem;
+  background-color: var(--color-white);
+  border-bottom: 1px solid #ddd;
+  padding: 0.6rem 0;
 }
 
 .breadcrumb ol {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.3rem;
   margin: 0;
   padding: 0;
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
 }
 
-.breadcrumb li::after {
-  content: ">";
-  margin-left: 0.4rem;
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
 }
 
-.breadcrumb li:last-child::after {
-  content: "";
+.breadcrumb li + li::before {
+  content: "›";
+  margin-right: 0.3rem;
+  color: #999;
 }
 
 .breadcrumb a {
-  text-decoration: none;
+  color: #111;
+  text-decoration: underline;
 }
+
 .breadcrumb a:hover,
 .breadcrumb a:focus-visible {
-  text-decoration: underline; /* seulement au survol */
+  text-decoration: none;
 }
 /* Contenu */
 .container {
@@ -363,6 +370,8 @@ h2 {
   position: fixed;
   right: 20px;
   bottom: 20px;
+  display: inline-block;
+  text-decoration: none;
   background: white;
   color: black;
   border: 2px solid black;
@@ -376,6 +385,50 @@ h2 {
 
 #back-to-top:hover {
   opacity: 0.9;
+}
+
+/* Sous-menus de navigation */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  background-color: #000;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 190px;
+  z-index: 1000;
+}
+
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu {
+  display: block;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.submenu li a:hover {
+  background-color: #333;
+}
+
+.submenu li a:focus {
+  outline: none;
+}
+
+.submenu li a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  background-color: #333;
 }
 
 /* Responsive */
@@ -416,12 +469,10 @@ h2 {
 
 @media (max-width: 700px) {
   .menu-toggle {
-    display: inline-block;
-    margin-bottom: 0.75rem;
+    display: none;
   }
 
   .nav-list {
-    display: none;
     flex-direction: column;
     gap: 0.4rem;
     width: 100%;
@@ -429,7 +480,16 @@ h2 {
     padding: 0.5rem 0 0;
   }
 
-  .nav-list.open {
+  .js .menu-toggle {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  .js .nav-list {
+    display: none;
+  }
+
+  .js .nav-list.open {
     display: flex;
   }
 

@@ -335,24 +335,69 @@ h2 {
   align-items: flex-start;
 }
 
-/* Bouton remonter en haut */
+/* Lien remonter en haut */
 #back-to-top {
   position: fixed;
   right: 20px;
   bottom: 20px;
+  display: inline-block;
   background-color: var(--color-white);
   color: var(--color-black);
-  border: 2px solid var(--color-black); /* AJOUT IMPORTANT */
+  border: 2px solid var(--color-black);
   padding: 0.8rem 1rem;
   border-radius: var(--radius);
-  cursor: pointer;
   font-weight: 700;
+  text-decoration: none;
   z-index: 1500;
   box-shadow: var(--shadow);
 }
 
 #back-to-top:hover {
   opacity: 0.9;
+}
+
+/* Sous-menus de navigation */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  background-color: #000;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 190px;
+  z-index: 1000;
+}
+
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu {
+  display: block;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.submenu li a:hover {
+  background-color: #333;
+}
+
+.submenu li a:focus {
+  outline: none;
+}
+
+.submenu li a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  background-color: #333;
 }
 
 /* Tablette */
@@ -410,13 +455,12 @@ h2 {
 
 /* Mobile */
 @media (max-width: 700px) {
+  /* Sans JS : hamburger masqué, menu toujours visible en colonne */
   .menu-toggle {
-    display: inline-block;
-    margin-bottom: 0.75rem;
+    display: none;
   }
 
   .nav-list {
-    display: none;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.4rem;
@@ -425,7 +469,17 @@ h2 {
     padding: 0.5rem 0 0;
   }
 
-  .nav-list.open {
+  /* Avec JS : hamburger visible, menu masqué jusqu'à l'ouverture */
+  .js .menu-toggle {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  .js .nav-list {
+    display: none;
+  }
+
+  .js .nav-list.open {
     display: flex;
   }
 
@@ -482,5 +536,324 @@ h2 {
 .section-evenements .card {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+}
+
+/* =============================================
+   Utilitaires partagés
+   ============================================= */
+
+/* Texte d'introduction limité en largeur */
+.texte-intro {
+  max-width: 620px;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+/* Formulaire de contact */
+.formulaire-contact {
+  max-width: 600px;
+}
+
+/* Section coordonnées / devenir partenaire */
+.section-secondaire {
+  margin-top: 3rem;
+  max-width: 680px;
+}
+
+.section-secondaire h2 {
+  text-align: left;
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.section-secondaire address {
+  font-style: normal;
+  line-height: 1.9;
+}
+
+/* Logo partenaire */
+.partenaire-logo {
+  max-height: 80px;
+  width: auto;
+  margin-bottom: 0.75rem;
+}
+
+/* Liste don */
+.don-liste {
+  line-height: 2;
+  max-width: 620px;
+}
+
+/* Bouton dans une carte don-option */
+.btn-option {
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+/* =============================================
+   Fil d'Ariane (breadcrumb)
+   ============================================= */
+.breadcrumb {
+  background-color: var(--color-white);
+  border-bottom: 1px solid #ddd;
+  padding: 0.6rem 0;
+}
+
+.breadcrumb ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.breadcrumb li + li::before {
+  content: "›";
+  margin-right: 0.3rem;
+  color: #999;
+}
+
+.breadcrumb a {
+  color: #111;
+  text-decoration: underline;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  text-decoration: none;
+}
+
+/* =============================================
+   Formulaires RGAA
+   ============================================= */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.form-label .obligatoire {
+  color: #c0392b;
+  margin-left: 0.2rem;
+  font-weight: 700;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  font-size: 1rem;
+  border: 2px solid #555;
+  border-radius: var(--radius);
+  background-color: var(--color-white);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing);
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-color: #111;
+}
+
+.form-control[aria-invalid="true"] {
+  border-color: #c0392b;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-error {
+  display: block;
+  color: #c0392b;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+.form-hint {
+  display: block;
+  color: #555;
+  font-size: 0.88rem;
+  margin-top: 0.25rem;
+}
+
+/* Mention champs obligatoires */
+.mention-obligatoire {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.mention-obligatoire .obligatoire {
+  color: #c0392b;
+  font-weight: 700;
+}
+
+/* Alertes résultat formulaire */
+.alerte {
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+}
+
+.alerte-succes {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #155724;
+}
+
+.alerte-erreur {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #721c24;
+}
+
+.btn-submit {
+  display: inline-block;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 0.9rem 2rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-submit:hover {
+  opacity: 0.85;
+}
+
+/* =============================================
+   Page partenaires
+   ============================================= */
+.partenaires-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.partenaire-card {
+  background-color: var(--color-white);
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.partenaire-card h2 {
+  text-align: left;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.partenaire-badge {
+  display: inline-block;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+
+.partenaire-card p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.partenaire-card .btn-lien {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: underline;
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.partenaire-card .btn-lien:hover {
+  text-decoration: none;
+}
+
+.partenaires-vide {
+  margin-top: 1.5rem;
+}
+
+/* =============================================
+   Page don
+   ============================================= */
+.don-intro {
+  max-width: 700px;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+.don-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.don-option {
+  background-color: var(--color-white);
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.don-option h2 {
+  font-size: 1.2rem;
+  text-align: left;
+  margin-bottom: 0.6rem;
+}
+
+.don-cta {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 3rem auto 0;
+}
+
+.don-cta h2 {
+  color: var(--color-white);
+  margin-bottom: 0.75rem;
+}
+
+.don-cta p {
+  margin-bottom: 1.2rem;
+}
+
+.don-cta .btn-primary {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  display: inline-block;
 }
 
