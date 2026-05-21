@@ -32,9 +32,11 @@ require_once 'includes/header.php';
     <div class="container">
       <h1>Nos événements</h1>
       <p>
-        LDS Association organise des événements sportifs ouverts à tous pour rassembler
-        les habitants autour du sport et de la solidarité. Les fonds collectés financent
-        directement nos actions solidaires.
+        Chez LDS Association, nous organisons des événements sportifs accessibles
+        à tous afin de réunir les habitants dans une ambiance conviviale et solidaire.
+        Ces moments de partage permettent de promouvoir le sport, l’entraide et
+        la solidarité au sein de la communauté. Les fonds récoltés lors de ces événements
+        sont utilisés pour soutenir et financer directement nos actions solidaires
       </p>
     </div>
   </section>

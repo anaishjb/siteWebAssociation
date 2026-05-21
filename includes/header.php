@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="<?= h($metaDescription) ?>" />
   <title><?= h($titrePage) ?> - LDS Association</title>
-  <link rel="stylesheet" href="<?= h($cssFile) ?>?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/siteWebAsso/' . $cssFile) ?>" />
+  <link rel="stylesheet" href="<?= h($cssFile) ?>?v=<?= filemtime($_SERVER['DOCUMENT_ROOT'] . '/siteWebAssolds/' . $cssFile) ?>" />
 </head>
 
 <body id="top">

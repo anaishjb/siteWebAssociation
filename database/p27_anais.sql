@@ -166,11 +166,11 @@ CREATE TABLE admin_utilisateurs (
   cree_le           DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Mot de passe par défaut : LDS2024
--- À changer dès la première connexion via la page admin
+-- Mot de passe par défaut : password
+-- À changer dès la première connexion via Admin → "Changer le mot de passe"
 INSERT INTO admin_utilisateurs (identifiant, mot_de_passe_hash) VALUES (
   'admin',
-  '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
 );
 
 

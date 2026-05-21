@@ -237,15 +237,7 @@ require_once 'includes/header.php';
       </form>
       <?php endif; ?>
 
-      <section class="section-secondaire" aria-labelledby="titre-coordonnees">
-        <h2 id="titre-coordonnees">Nos coordonnées</h2>
-        <address>
-          <strong>LDS Association</strong><br />
-          5 rue Nicolas Copernic<br />
-          93290 Tremblay-en-France<br />
-          France
-        </address>
-      </section>
+      
 
     </div>
   </section>
