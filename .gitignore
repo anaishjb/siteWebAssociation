@@ -1,0 +1,6 @@
+# Images uploadées par l'admin
+uploads/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
