@@ -49,10 +49,28 @@ require_once 'includes/header.php';
       </p>
 
       <?php else: ?>
-      <div class="partenaires-liste">
+
+        <div class="recherche-wrapper">
+          <label for="recherche-partenaire" class="sr-only">Rechercher un partenaire</label>
+          <input
+            type="search"
+            id="recherche-partenaire"
+            class="recherche-input"
+            placeholder="Rechercher par nom, type, description…"
+            aria-controls="liste-partenaires"
+            aria-label="Rechercher un partenaire"
+          />
+          <p class="recherche-compteur" id="compteur-partenaires" aria-live="polite"></p>
+        </div>
+
+      <div class="partenaires-liste" id="liste-partenaires">
 
         <?php foreach ($partenaires as $p): ?>
-        <article class="partenaire-card" aria-labelledby="partenaire-<?= (int)$p['id'] ?>">
+        <article
+          class="partenaire-card"
+          aria-labelledby="partenaire-<?= (int)$p['id'] ?>"
+          data-recherche="<?= h(mb_strtolower($p['nom'] . ' ' . $p['type_partenariat'] . ' ' . $p['description'])) ?>"
+        >
 
           <?php if ($p['logo_src']): ?>
           <img
@@ -83,6 +101,11 @@ require_once 'includes/header.php';
 
       </div>
       <?php endif; ?>
+
+      <script src="recherche-evenements.js"></script>
+      <script>
+        initRecherche('recherche-partenaire', 'liste-partenaires', 'compteur-partenaires', '.partenaire-card');
+      </script>
 
       <section class="section-secondaire" aria-labelledby="titre-devenir">
         <h2 id="titre-devenir">Devenir partenaire</h2>

@@ -46,14 +46,15 @@ function correspond(terme, texte) {
   });
 }
 
-function initRecherche(inputId, grilleId, compteurId) {
+function initRecherche(inputId, grilleId, compteurId, carteSelecteur) {
   const input    = document.getElementById(inputId);
   const grille   = document.getElementById(grilleId);
   const compteur = document.getElementById(compteurId);
 
   if (!input || !grille) return;
 
-  const cartes = Array.from(grille.querySelectorAll('.carte-evenement'));
+  const selecteur = carteSelecteur || '.carte-evenement';
+  const cartes    = Array.from(grille.querySelectorAll(selecteur));
   const total  = cartes.length;
   compteur.textContent = total + ' événement' + (total > 1 ? 's' : '');
 
