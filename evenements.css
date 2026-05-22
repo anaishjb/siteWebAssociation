@@ -356,6 +356,46 @@ h2 {
   font-size: 0.95rem;
 }
 
+/* ---- Barre de recherche ---- */
+.recherche-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.recherche-input {
+  flex: 1;
+  min-width: 240px;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  border: 2px solid #555;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #111;
+}
+
+.recherche-input:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-color: #111;
+}
+
+.recherche-compteur {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+.aucun-resultat {
+  text-align: center;
+  padding: 2rem;
+  color: #555;
+  font-style: italic;
+}
+
 /* ---- Cartes événements ---- */
 .grille-evenements {
   display: grid;

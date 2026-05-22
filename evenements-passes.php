@@ -54,9 +54,26 @@ require_once 'includes/header.php';
       <?php if (empty($evenements)): ?>
         <p class="aucun-evenement">Aucun événement passé pour le moment.</p>
       <?php else: ?>
-        <div class="grille-evenements">
+
+        <div class="recherche-wrapper">
+          <label for="recherche-evenement" class="sr-only">Rechercher un événement</label>
+          <input
+            type="search"
+            id="recherche-evenement"
+            class="recherche-input"
+            placeholder="Rechercher par titre, lieu, description…"
+            aria-controls="grille-passes"
+            aria-label="Rechercher un événement passé"
+          />
+          <p class="recherche-compteur" id="compteur-passes" aria-live="polite"></p>
+        </div>
+
+        <div class="grille-evenements" id="grille-passes">
           <?php foreach ($evenements as $ev): ?>
-          <article class="carte-evenement">
+          <article
+            class="carte-evenement"
+            data-recherche="<?= h(mb_strtolower($ev['titre'] . ' ' . $ev['lieu'] . ' ' . $ev['description'])) ?>"
+          >
             <?php if ($ev['image_src']): ?>
             <img
               class="carte-evenement-image"
@@ -81,13 +98,18 @@ require_once 'includes/header.php';
           </article>
           <?php endforeach; ?>
         </div>
-      <?php endif; ?>
 
+      <?php endif; ?>
     </div>
   </section>
 
 <?php endif; ?>
 
 </main>
+
+<script src="recherche-evenements.js"></script>
+<script>
+  initRecherche('recherche-evenement', 'grille-passes', 'compteur-passes');
+</script>
 
 <?php require_once 'includes/footer.php'; ?>
