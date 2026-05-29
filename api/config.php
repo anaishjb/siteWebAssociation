@@ -4,8 +4,8 @@
 
 define('DB_HOTE',        'localhost');
 define('DB_NOM',         'p27_anais');
-define('DB_UTILISATEUR', 'root');  // XAMPP local : root / Handiman : p27_anais
-define('DB_MOT_PASSE',   '');      // XAMPP local : vide / Handiman : ton mot de passe
+define('DB_UTILISATEUR', 'anais');  // XAMPP local : root / Handiman : p27_anais
+define('DB_MOT_PASSE',   'wipyoacodmi6sli');      // XAMPP local : vide / Handiman : ton mot de passe
 define('DB_CHARSET', 'utf8mb4');
 
 function connecterBDD(): PDO
