@@ -85,3 +85,28 @@ if (boutonMenu && menuPrincipal) {
     boutonMenu.setAttribute('aria-expanded', estOuvert ? 'true' : 'false');
   });
 }
+
+// Sous-menus : aria-expanded + fermeture à la touche Escape
+document.querySelectorAll('.has-submenu > a').forEach(function (lien) {
+  const li = lien.parentElement;
+
+  lien.setAttribute('aria-haspopup', 'true');
+  lien.setAttribute('aria-expanded', 'false');
+
+  li.addEventListener('focusin', function () {
+    lien.setAttribute('aria-expanded', 'true');
+  });
+
+  li.addEventListener('focusout', function (e) {
+    if (!li.contains(e.relatedTarget)) {
+      lien.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  li.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      lien.setAttribute('aria-expanded', 'false');
+      lien.focus();
+    }
+  });
+});

@@ -6,6 +6,7 @@ $titrePage       = 'Faire un don';
 $cssFile         = 'style.css';
 $metaDescription = 'Soutenez LDS Association par un don et contribuez à nos actions solidaires';
 $navActive       = 'don';
+$sansSubmenu     = true;
 
 require_once 'includes/header.php';
 ?>

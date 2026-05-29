@@ -6,6 +6,7 @@ $titrePage       = 'Nos missions';
 $cssFile         = 'missions.css';
 $metaDescription = 'Nos missions solidaires — LDS Association';
 $navActive       = 'actions';
+$sansSubmenu     = true;
 
 try {
     $bdd = connecterBDD();

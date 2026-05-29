@@ -6,6 +6,7 @@ $titrePage       = 'Nos partenaires';
 $cssFile         = 'style.css';
 $metaDescription = 'Les partenaires de LDS Association qui soutiennent nos actions solidaires';
 $navActive       = 'actions';
+$sansSubmenu     = true;
 
 try {
     $bdd        = connecterBDD();

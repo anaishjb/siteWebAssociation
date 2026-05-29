@@ -239,7 +239,7 @@ body.font-georgia { font-family: Georgia, serif; }
 .breadcrumb li + li::before {
   content: "›";
   margin-right: 0.3rem;
-  color: #999;
+  color: #767676;
 }
 
 .breadcrumb a {

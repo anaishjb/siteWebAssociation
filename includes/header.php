@@ -44,7 +44,7 @@
               Qui sommes nous
             </a>
           </li>
-          <li class="has-submenu">
+          <li class="<?= empty($sansSubmenu) ? 'has-submenu' : '' ?>">
             <?php
               $sousEvenements = ['evenements-passes', 'prochain-evenement'];
               $evenementsActif = $navActive === 'evenements';
@@ -54,6 +54,7 @@
                <?= $evenementsActif ? 'class="active" aria-current="page"' : ($sousPageActive ? 'class="active"' : '') ?>>
               Événements
             </a>
+            <?php if (empty($sansSubmenu)): ?>
             <ul class="submenu">
               <li>
                 <a href="evenements-passes.php" <?= $navActive === 'evenements-passes' ? 'aria-current="page"' : '' ?>>
@@ -66,6 +67,7 @@
                 </a>
               </li>
             </ul>
+            <?php endif; ?>
           </li>
           <li>
             <a href="actions_solidaires.html" <?= $navActive === 'actions' ? 'class="active" aria-current="page"' : '' ?>>

@@ -235,7 +235,7 @@ body.font-georgia {
 .breadcrumb li + li::before {
   content: "›";
   margin-right: 0.3rem;
-  color: #999;
+  color: #767676;
 }
 
 .breadcrumb a {
