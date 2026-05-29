@@ -195,6 +195,27 @@ textarea:focus-visible {
   color: #555;
 }
 
+/* Sections missions */
+.admin-section {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.admin-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.admin-section-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
 /* Tableau */
 .admin-table-wrapper {
   overflow-x: auto;
