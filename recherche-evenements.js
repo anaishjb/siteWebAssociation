@@ -46,17 +46,19 @@ function correspond(terme, texte) {
   });
 }
 
-function initRecherche(inputId, grilleId, compteurId, carteSelecteur) {
+function initRecherche(inputId, grilleId, compteurId, carteSelecteur, motSingulier, motPluriel) {
   const input    = document.getElementById(inputId);
   const grille   = document.getElementById(grilleId);
   const compteur = document.getElementById(compteurId);
 
   if (!input || !grille) return;
 
+  const singulier = motSingulier || 'événement';
+  const pluriel   = motPluriel   || 'événements';
   const selecteur = carteSelecteur || '.carte-evenement';
   const cartes    = Array.from(grille.querySelectorAll(selecteur));
-  const total  = cartes.length;
-  compteur.textContent = total + ' événement' + (total > 1 ? 's' : '');
+  const total     = cartes.length;
+  compteur.textContent = total + ' ' + (total > 1 ? pluriel : singulier);
 
   input.addEventListener('input', function () {
     const terme  = this.value.trim();
@@ -70,7 +72,7 @@ function initRecherche(inputId, grilleId, compteurId, carteSelecteur) {
     });
 
     compteur.textContent =
-      visibles + ' événement' + (visibles > 1 ? 's' : '') +
+      visibles + ' ' + (visibles > 1 ? pluriel : singulier) +
       (terme !== '' ? ' trouvé' + (visibles > 1 ? 's' : '') : '');
   });
 }

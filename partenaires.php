@@ -105,7 +105,7 @@ require_once 'includes/header.php';
 
       <script src="recherche-evenements.js"></script>
       <script>
-        initRecherche('recherche-partenaire', 'liste-partenaires', 'compteur-partenaires', '.partenaire-card');
+        initRecherche('recherche-partenaire', 'liste-partenaires', 'compteur-partenaires', '.partenaire-card', 'partenaire', 'partenaires');
       </script>
 
       <section class="section-secondaire" aria-labelledby="titre-devenir">
