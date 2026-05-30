@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <p>Connectez-vous pour accéder au tableau de bord.</p>
 
       <?php if ($erreur): ?>
-      <div role="alert" class="alerte alerte-erreur"><?= h($erreur) ?></div>
+      <div role="alert" class="alerte alerte-erreur" id="err-login"><?= h($erreur) ?></div>
       <?php endif; ?>
 
       <form method="post" action="login.php" novalidate>
@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             autocomplete="username"
             required
             aria-required="true"
-            <?= $erreur ? 'aria-invalid="true"' : '' ?>
+            <?= $erreur ? 'aria-invalid="true" aria-describedby="err-login"' : '' ?>
           />
         </div>
 
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             autocomplete="current-password"
             required
             aria-required="true"
-            <?= $erreur ? 'aria-invalid="true"' : '' ?>
+            <?= $erreur ? 'aria-invalid="true" aria-describedby="err-login"' : '' ?>
           />
         </div>
 

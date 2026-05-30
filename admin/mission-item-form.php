@@ -99,6 +99,8 @@ require_once 'header.php';
     <input type="hidden" name="csrf_token" value="<?= h($_SESSION['csrf_token']) ?>" />
     <input type="hidden" name="type" value="<?= h($type) ?>" />
 
+    <p class="mention-obligatoire">Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span><span class="sr-only">astérisque</span> sont obligatoires.</p>
+
     <div class="form-group">
       <label class="form-label" for="titre">Titre <span class="obligatoire" aria-hidden="true">*</span></label>
       <input type="text" class="form-control" id="titre" name="titre"

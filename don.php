@@ -52,6 +52,21 @@ require_once 'includes/header.php';
           </a>
         </article>
 
+        <article class="don-option don-option-paypal">
+          <h2>Don en ligne — PayPal</h2>
+          <p>
+            Vous pouvez effectuer un don sécurisé en ligne via PayPal.
+            Aucun compte PayPal n'est nécessaire : vous pouvez payer par carte bancaire.
+          </p>
+          <a href="https://www.paypal.me/LIEN_PAYPAL_ICI"
+             class="btn-primary btn-option btn-paypal"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Faire un don via PayPal (nouvelle fenêtre)">
+            Faire un don via PayPal
+          </a>
+        </article>
+
         <article class="don-option">
           <h2>Don matériel</h2>
           <p>

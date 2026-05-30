@@ -567,6 +567,12 @@ textarea:focus-visible {
   color: var(--color-danger);
 }
 
+.mention-obligatoire {
+  font-size: 0.875rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
 /* Miniature logo dans le tableau partenaires */
 .logo-miniature {
   width: 36px;
@@ -636,3 +642,26 @@ textarea:focus-visible {
     border-bottom-color: var(--color-accent);
   }
 }
+
+/* Bouton remonter en haut */
+#back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: inline-block;
+  background-color: #fff;
+  color: #111;
+  border: 2px solid #111;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 1500;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+#back-to-top:hover,
+#back-to-top:focus {
+  opacity: 0.85;
+}
+

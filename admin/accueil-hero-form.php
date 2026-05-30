@@ -3,19 +3,19 @@ require_once 'auth.php';
 require_once '../api/config.php';
 require_once '../includes/helpers.php';
 
-$titrePage = 'Modifier — Notre rêve';
-$navActive  = 'missions';
+$titrePage = 'Modifier le bandeau principal';
+$navActive  = 'accueil';
 
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
 $erreurs = [];
-$valeurs = ['titre' => '', 'texte1' => '', 'texte2' => '', 'image_src' => '', 'image_alt' => ''];
+$valeurs = ['image_src' => '', 'image_alt' => '', 'titre' => '', 'texte' => '', 'bouton_href' => '', 'bouton_texte' => ''];
 
 try {
     $bdd      = connecterBDD();
-    $existant = $bdd->query('SELECT * FROM missions_reve LIMIT 1')->fetch();
+    $existant = $bdd->query('SELECT * FROM hero LIMIT 1')->fetch();
     if ($existant) {
         $valeurs = $existant;
     }
@@ -28,14 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'] ?? '')) {
         $erreurs['global'] = 'Requête invalide. Rechargez la page.';
     } else {
-        $valeurs['titre']     = trim($_POST['titre']     ?? '');
-        $valeurs['texte1']    = trim($_POST['texte1']    ?? '');
-        $valeurs['texte2']    = trim($_POST['texte2']    ?? '');
-        $valeurs['image_alt'] = trim($_POST['image_alt'] ?? '');
+        $valeurs['titre']        = trim($_POST['titre']        ?? '');
+        $valeurs['texte']        = trim($_POST['texte']        ?? '');
+        $valeurs['bouton_href']  = trim($_POST['bouton_href']  ?? '');
+        $valeurs['bouton_texte'] = trim($_POST['bouton_texte'] ?? '');
+        $valeurs['image_alt']    = trim($_POST['image_alt']    ?? '');
 
-        if ($valeurs['titre']  === '') $erreurs['titre']  = 'Le titre est obligatoire.';
-        if ($valeurs['texte1'] === '') $erreurs['texte1'] = 'Le premier paragraphe est obligatoire.';
-        if ($valeurs['texte2'] === '') $erreurs['texte2'] = 'Le second paragraphe est obligatoire.';
+        if ($valeurs['titre']        === '') $erreurs['titre']        = 'Le titre est obligatoire.';
+        if ($valeurs['texte']        === '') $erreurs['texte']        = 'Le texte est obligatoire.';
+        if ($valeurs['bouton_href']  === '') $erreurs['bouton_href']  = 'Le lien du bouton est obligatoire.';
+        if ($valeurs['bouton_texte'] === '') $erreurs['bouton_texte'] = 'Le texte du bouton est obligatoire.';
 
         $nouvelleImageSrc = $valeurs['image_src'];
 
@@ -52,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $erreurs['image'] = 'L\'image ne doit pas dépasser 5 Mo.';
             } else {
                 $ext        = strtolower(pathinfo($fichier['name'], PATHINFO_EXTENSION));
-                $nomFichier = uniqid('mission_reve_', true) . '.' . $ext;
-                $dossier    = dirname(__DIR__) . '/uploads/missions/';
+                $nomFichier = uniqid('hero_', true) . '.' . $ext;
+                $dossier    = dirname(__DIR__) . '/uploads/accueil/';
                 if (!is_dir($dossier)) mkdir($dossier, 0755, true);
 
                 if (move_uploaded_file($fichier['tmp_name'], $dossier . $nomFichier)) {
@@ -61,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $ancien = dirname(__DIR__) . '/' . $valeurs['image_src'];
                         if (file_exists($ancien)) unlink($ancien);
                     }
-                    $nouvelleImageSrc = 'uploads/missions/' . $nomFichier;
+                    $nouvelleImageSrc = 'uploads/accueil/' . $nomFichier;
                 } else {
                     $erreurs['image'] = 'Impossible de sauvegarder l\'image.';
                 }
@@ -76,29 +78,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 if ($existant) {
                     $bdd->prepare(
-                        'UPDATE missions_reve SET titre=:titre, texte1=:texte1, texte2=:texte2,
-                         image_src=:image_src, image_alt=:image_alt WHERE id=:id'
+                        'UPDATE hero SET titre=:titre, texte=:texte, bouton_href=:bouton_href,
+                         bouton_texte=:bouton_texte, image_src=:image_src, image_alt=:image_alt
+                         WHERE id=:id'
                     )->execute([
-                        ':titre'     => $valeurs['titre'],
-                        ':texte1'    => $valeurs['texte1'],
-                        ':texte2'    => $valeurs['texte2'],
-                        ':image_src' => $nouvelleImageSrc,
-                        ':image_alt' => $valeurs['image_alt'],
-                        ':id'        => $existant['id'],
+                        ':titre'        => $valeurs['titre'],
+                        ':texte'        => $valeurs['texte'],
+                        ':bouton_href'  => $valeurs['bouton_href'],
+                        ':bouton_texte' => $valeurs['bouton_texte'],
+                        ':image_src'    => $nouvelleImageSrc,
+                        ':image_alt'    => $valeurs['image_alt'],
+                        ':id'           => $existant['id'],
                     ]);
                 } else {
                     $bdd->prepare(
-                        'INSERT INTO missions_reve (titre, texte1, texte2, image_src, image_alt)
-                         VALUES (:titre, :texte1, :texte2, :image_src, :image_alt)'
+                        'INSERT INTO hero (titre, texte, bouton_href, bouton_texte, image_src, image_alt)
+                         VALUES (:titre, :texte, :bouton_href, :bouton_texte, :image_src, :image_alt)'
                     )->execute([
-                        ':titre'     => $valeurs['titre'],
-                        ':texte1'    => $valeurs['texte1'],
-                        ':texte2'    => $valeurs['texte2'],
-                        ':image_src' => $nouvelleImageSrc,
-                        ':image_alt' => $valeurs['image_alt'],
+                        ':titre'        => $valeurs['titre'],
+                        ':texte'        => $valeurs['texte'],
+                        ':bouton_href'  => $valeurs['bouton_href'],
+                        ':bouton_texte' => $valeurs['bouton_texte'],
+                        ':image_src'    => $nouvelleImageSrc,
+                        ':image_alt'    => $valeurs['image_alt'],
                     ]);
                 }
-                header('Location: missions.php?succes=1');
+                header('Location: accueil.php?succes=1');
                 exit;
             } catch (PDOException $e) {
                 $erreurs['global'] = 'Erreur lors de la sauvegarde.';
@@ -112,20 +117,20 @@ require_once 'header.php';
 
 <nav class="breadcrumb-admin" aria-label="Fil d'Ariane">
   <ol>
-    <li><a href="missions.php">Missions</a></li>
+    <li><a href="accueil.php">Accueil</a></li>
     <li aria-hidden="true"> › </li>
-    <li aria-current="page">Notre rêve</li>
+    <li aria-current="page">Bandeau principal</li>
   </ol>
 </nav>
 
-<h1>Modifier — Notre rêve</h1>
+<h1>Modifier le bandeau principal</h1>
 
 <?php if (!empty($erreurs['global'])): ?>
 <div role="alert" class="alerte alerte-erreur"><?= h($erreurs['global']) ?></div>
 <?php endif; ?>
 
 <div class="form-ev-card">
-  <form method="post" action="mission-reve-form.php" enctype="multipart/form-data" novalidate>
+  <form method="post" action="accueil-hero-form.php" enctype="multipart/form-data" novalidate>
     <input type="hidden" name="csrf_token" value="<?= h($_SESSION['csrf_token']) ?>" />
 
     <p class="mention-obligatoire">Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span><span class="sr-only">astérisque</span> sont obligatoires.</p>
@@ -141,23 +146,36 @@ require_once 'header.php';
     </div>
 
     <div class="form-group">
-      <label class="form-label" for="texte1">Paragraphe 1 <span class="obligatoire" aria-hidden="true">*</span></label>
-      <textarea class="form-control" id="texte1" name="texte1" rows="4" required aria-required="true"
-        <?= isset($erreurs['texte1']) ? 'aria-invalid="true" aria-describedby="err-texte1"' : '' ?>
-      ><?= h($valeurs['texte1']) ?></textarea>
-      <?php if (isset($erreurs['texte1'])): ?>
-      <span class="form-error" id="err-texte1" role="alert"><?= h($erreurs['texte1']) ?></span>
+      <label class="form-label" for="texte">Texte <span class="obligatoire" aria-hidden="true">*</span></label>
+      <textarea class="form-control" id="texte" name="texte" rows="5" required aria-required="true"
+        <?= isset($erreurs['texte']) ? 'aria-invalid="true" aria-describedby="err-texte"' : '' ?>
+      ><?= h($valeurs['texte']) ?></textarea>
+      <?php if (isset($erreurs['texte'])): ?>
+      <span class="form-error" id="err-texte" role="alert"><?= h($erreurs['texte']) ?></span>
       <?php endif; ?>
     </div>
 
-    <div class="form-group">
-      <label class="form-label" for="texte2">Paragraphe 2 <span class="obligatoire" aria-hidden="true">*</span></label>
-      <textarea class="form-control" id="texte2" name="texte2" rows="4" required aria-required="true"
-        <?= isset($erreurs['texte2']) ? 'aria-invalid="true" aria-describedby="err-texte2"' : '' ?>
-      ><?= h($valeurs['texte2']) ?></textarea>
-      <?php if (isset($erreurs['texte2'])): ?>
-      <span class="form-error" id="err-texte2" role="alert"><?= h($erreurs['texte2']) ?></span>
-      <?php endif; ?>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="bouton_texte">Texte du bouton <span class="obligatoire" aria-hidden="true">*</span></label>
+        <input type="text" class="form-control" id="bouton_texte" name="bouton_texte"
+          value="<?= h($valeurs['bouton_texte']) ?>" required aria-required="true" maxlength="100"
+          <?= isset($erreurs['bouton_texte']) ? 'aria-invalid="true" aria-describedby="err-bouton-texte"' : '' ?> />
+        <?php if (isset($erreurs['bouton_texte'])): ?>
+        <span class="form-error" id="err-bouton-texte" role="alert"><?= h($erreurs['bouton_texte']) ?></span>
+        <?php endif; ?>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="bouton_href">Lien du bouton <span class="obligatoire" aria-hidden="true">*</span></label>
+        <input type="text" class="form-control" id="bouton_href" name="bouton_href"
+          value="<?= h($valeurs['bouton_href']) ?>" required aria-required="true" maxlength="255"
+          placeholder="evenements.php"
+          <?= isset($erreurs['bouton_href']) ? 'aria-invalid="true" aria-describedby="err-bouton-href"' : '' ?> />
+        <?php if (isset($erreurs['bouton_href'])): ?>
+        <span class="form-error" id="err-bouton-href" role="alert"><?= h($erreurs['bouton_href']) ?></span>
+        <?php endif; ?>
+      </div>
     </div>
 
     <div class="form-group">
@@ -192,7 +210,7 @@ require_once 'header.php';
 
     <div class="form-actions">
       <button type="submit" class="btn-admin">Enregistrer</button>
-      <a href="missions.php" class="btn-admin btn-retour">Annuler</a>
+      <a href="accueil.php" class="btn-admin btn-retour">Annuler</a>
     </div>
   </form>
 </div>

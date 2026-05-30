@@ -172,6 +172,8 @@ require_once 'header.php';
 
     <input type="hidden" name="csrf_token" value="<?= h($_SESSION['csrf_token']) ?>" />
 
+    <p class="mention-obligatoire">Les champs marqués d'un <span class="obligatoire" aria-hidden="true">*</span><span class="sr-only">astérisque</span> sont obligatoires.</p>
+
     <div class="form-group">
       <label class="form-label" for="titre">Titre <span class="obligatoire" aria-hidden="true">*</span></label>
       <input
@@ -271,7 +273,7 @@ require_once 'header.php';
     </div>
 
     <div class="form-group">
-      <label class="form-label" for="image_alt">Texte alternatif de l'image</label>
+      <label class="form-label" for="image_alt">Texte alternatif de l'image <span class="obligatoire" aria-hidden="true">*</span></label>
       <span class="form-hint" id="hint-alt">Décrit l'image pour les personnes malvoyantes. Obligatoire si une image est ajoutée.</span>
       <input
         type="text"
