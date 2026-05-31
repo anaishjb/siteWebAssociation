@@ -5,7 +5,7 @@ require_once 'includes/helpers.php';
 $titrePage       = 'Nos pôles';
 $cssFile         = 'poles.css';
 $metaDescription = 'Présentation des pôles de LDS Association';
-$navActive       = 'qui';
+$navActive       = 'poles';
 
 try {
     $bdd = connecterBDD();
@@ -25,7 +25,7 @@ require_once 'includes/header.php';
   <ol>
     <li><a href="index.php">Accueil</a></li>
     <li><a href="QuiSommesNs.html">Qui sommes nous</a></li>
-    <li aria-current="page">Nos pôles</li>
+    <li aria-current="page">Pôles</li>
   </ol>
 </nav>
 
@@ -40,7 +40,7 @@ require_once 'includes/header.php';
 
   <section class="section intro-section">
     <div class="container">
-      <h1 class="sr-only">Nos pôles</h1>
+      <h1>Nos pôles</h1>
       <div class="intro-box">
         <?php foreach ($introTextes as $paragraphe): ?>
         <p><?= h($paragraphe['texte']) ?></p>

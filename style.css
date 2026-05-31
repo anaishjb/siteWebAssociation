@@ -391,6 +391,14 @@ h2 {
   display: block;
 }
 
+.js .has-submenu:focus-within .submenu {
+  display: none;
+}
+
+.js .has-submenu > a[aria-expanded="true"] ~ .submenu {
+  display: block;
+}
+
 .submenu li a {
   display: block;
   padding: 10px 15px;

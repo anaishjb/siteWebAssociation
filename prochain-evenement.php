@@ -26,7 +26,7 @@ require_once 'includes/header.php';
   <ol>
     <li><a href="index.php">Accueil</a></li>
     <li><a href="evenements.php">Événements</a></li>
-    <li aria-current="page">Prochains événements</li>
+    <li aria-current="page">À venir</li>
   </ol>
 </nav>
 
@@ -49,7 +49,7 @@ require_once 'includes/header.php';
 
   <section class="section" aria-labelledby="titre-prochains">
     <div class="container">
-      <h2 id="titre-prochains" class="sr-only">Liste des prochains événements</h2>
+      <h2 id="titre-prochains">Liste des prochains événements</h2>
 
       <?php if (empty($evenements)): ?>
         <p class="aucun-evenement">Aucun événement à venir pour le moment. Revenez bientôt !</p>
@@ -67,7 +67,7 @@ require_once 'includes/header.php';
             aria-controls="grille-prochains"
             aria-label="Rechercher un prochain événement"
           />
-          <p class="recherche-compteur" id="compteur-prochains" aria-live="polite"></p>
+          <p class="recherche-compteur" id="compteur-prochains" aria-live="polite" aria-atomic="true"></p>
         </div>
 
         <div class="grille-evenements" id="grille-prochains">

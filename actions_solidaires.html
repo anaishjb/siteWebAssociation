@@ -30,18 +30,26 @@
 
           <ul class="nav-list" id="main-menu">
             <li><a href="index.php">Accueil</a></li>
-            <li><a href="QuiSommesNs.html">Qui sommes nous</a></li>
-            <li>
+            <li class="has-submenu">
+              <a href="QuiSommesNs.html">Qui sommes nous</a>
+              <ul class="submenu">
+                <li><a href="poles.php">Pôles sportifs</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
               <a href="evenements.php">Événements</a>
+              <ul class="submenu">
+                <li><a href="evenements-passes.php">Événements passés</a></li>
+                <li><a href="prochain-evenement.php">Prochain événement</a></li>
+              </ul>
             </li>
             <li class="has-submenu">
               <a href="actions_solidaires.html" class="active" aria-current="page">
                 Actions solidaires
               </a>
-
               <ul class="submenu">
-                <li><a href="missions.php">Nos missions</a></li>
-                <li><a href="partenaires.php">Nos partenaires</a></li>
+                <li><a href="missions.php">Missions</a></li>
+                <li><a href="partenaires.php">Partenaires</a></li>
               </ul>
             </li>
 

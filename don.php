@@ -6,7 +6,6 @@ $titrePage       = 'Faire un don';
 $cssFile         = 'style.css';
 $metaDescription = 'Soutenez LDS Association par un don et contribuez à nos actions solidaires';
 $navActive       = 'don';
-$sansSubmenu     = true;
 
 require_once 'includes/header.php';
 ?>
@@ -28,7 +27,7 @@ require_once 'includes/header.php';
       <div class="don-options" aria-labelledby="titre-comment">
 
         <article class="don-option">
-          <h2>Don en espèces</h2>
+          <h3>Don en espèces</h3>
           <p>
             Vous pouvez remettre votre don directement à nos bénévoles lors de nos événements
             ou à notre siège associatif. Un reçu vous est remis sur demande.
@@ -41,7 +40,7 @@ require_once 'includes/header.php';
         </article>
 
         <article class="don-option">
-          <h2>Don lors d'un événement</h2>
+          <h3>Don lors d'un événement</h3>
           <p>
             Chacun de nos événements sportifs est une occasion de contribuer directement.
             Les inscriptions et les collectes réalisées sur place sont intégralement reversées
@@ -53,7 +52,7 @@ require_once 'includes/header.php';
         </article>
 
         <article class="don-option don-option-paypal">
-          <h2>Don en ligne — PayPal</h2>
+          <h3>Don en ligne — PayPal</h3>
           <p>
             Vous pouvez effectuer un don sécurisé en ligne via PayPal.
             Aucun compte PayPal n'est nécessaire : vous pouvez payer par carte bancaire.
@@ -68,7 +67,7 @@ require_once 'includes/header.php';
         </article>
 
         <article class="don-option">
-          <h2>Don matériel</h2>
+          <h3>Don matériel</h3>
           <p>
             Vêtements, produits d'hygiène, fournitures scolaires, denrées alimentaires non périssables…
             Vos dons en nature sont les bienvenus. Contactez-nous pour organiser une remise.

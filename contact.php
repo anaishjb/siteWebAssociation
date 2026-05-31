@@ -113,7 +113,7 @@ require_once 'includes/header.php';
       <?php endif; ?>
 
       <?php if ($succes): ?>
-      <div role="alert" class="alerte alerte-succes" aria-live="polite">
+      <div role="status" class="alerte alerte-succes" aria-live="polite" aria-atomic="true">
         Votre message a bien été envoyé. Merci de nous avoir contactés !
       </div>
       <?php endif; ?>

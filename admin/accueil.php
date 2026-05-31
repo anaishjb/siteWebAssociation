@@ -27,13 +27,13 @@ if (!$erreur && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = (int)($_POST['id'] ?? 0);
         if ($id > 0) {
             $bdd->prepare('DELETE FROM cartes_accueil WHERE id = :id')->execute([':id' => $id]);
-            $alerte = '<div role="alert" class="alerte alerte-succes">Carte supprimée.</div>';
+            $alerte = '<div role="status" class="alerte alerte-succes">Carte supprimée.</div>';
         }
     }
 }
 
 if (isset($_GET['succes'])) {
-    $alerte = '<div role="alert" class="alerte alerte-succes">Modifications enregistrées.</div>';
+    $alerte = '<div role="status" class="alerte alerte-succes">Modifications enregistrées.</div>';
 }
 
 $hero   = [];

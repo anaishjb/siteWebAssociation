@@ -5,8 +5,7 @@ require_once 'includes/helpers.php';
 $titrePage       = 'Nos partenaires';
 $cssFile         = 'style.css';
 $metaDescription = 'Les partenaires de LDS Association qui soutiennent nos actions solidaires';
-$navActive       = 'actions';
-$sansSubmenu     = true;
+$navActive       = 'partenaires';
 
 try {
     $bdd        = connecterBDD();
@@ -23,7 +22,7 @@ require_once 'includes/header.php';
   <ol>
     <li><a href="index.php">Accueil</a></li>
     <li><a href="actions_solidaires.html">Actions solidaires</a></li>
-    <li aria-current="page">Nos partenaires</li>
+    <li aria-current="page">Partenaires</li>
   </ol>
 </nav>
 
@@ -61,7 +60,7 @@ require_once 'includes/header.php';
             aria-controls="liste-partenaires"
             aria-label="Rechercher un partenaire"
           />
-          <p class="recherche-compteur" id="compteur-partenaires" aria-live="polite"></p>
+          <p class="recherche-compteur" id="compteur-partenaires" aria-live="polite" aria-atomic="true"></p>
         </div>
 
       <div class="partenaires-liste" id="liste-partenaires">

@@ -79,7 +79,7 @@ require_once 'header.php';
 <?php endif; ?>
 
 <?php if ($succes): ?>
-<div role="alert" class="alerte alerte-succes">Mot de passe mis à jour avec succès.</div>
+<div role="status" class="alerte alerte-succes">Mot de passe mis à jour avec succès.</div>
 <?php endif; ?>
 
 <div class="changer-mdp-card">

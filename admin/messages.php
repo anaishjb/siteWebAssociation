@@ -30,14 +30,14 @@ if (!$erreur && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($action === 'marquer_lu' && $id > 0) {
             $bdd->prepare('UPDATE contact_messages SET lu = 1 WHERE id = :id')->execute([':id' => $id]);
-            $alerte = '<div role="alert" class="alerte alerte-succes">Message marqué comme lu.</div>';
+            $alerte = '<div role="status" class="alerte alerte-succes">Message marqué comme lu.</div>';
         } elseif ($action === 'supprimer' && $id > 0) {
             $bdd->prepare('DELETE FROM contact_messages WHERE id = :id')->execute([':id' => $id]);
             if (isset($_GET['id'])) {
                 header('Location: messages.php?supprime=1');
                 exit;
             }
-            $alerte = '<div role="alert" class="alerte alerte-succes">Message supprimé.</div>';
+            $alerte = '<div role="status" class="alerte alerte-succes">Message supprimé.</div>';
         }
     }
 }
@@ -68,7 +68,7 @@ if (!$erreur) {
 }
 
 if (isset($_GET['supprime'])) {
-    $alerte = '<div role="alert" class="alerte alerte-succes">Message supprimé avec succès.</div>';
+    $alerte = '<div role="status" class="alerte alerte-succes">Message supprimé avec succès.</div>';
 }
 
 require_once 'header.php';

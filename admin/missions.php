@@ -30,13 +30,13 @@ if (!$erreur && $_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($id > 0 && in_array($type, ['objectif', 'besoin'], true)) {
             $table = $type === 'objectif' ? 'missions_objectifs' : 'missions_besoins';
             $bdd->prepare("DELETE FROM {$table} WHERE id = :id")->execute([':id' => $id]);
-            $alerte = '<div role="alert" class="alerte alerte-succes">Élément supprimé.</div>';
+            $alerte = '<div role="status" class="alerte alerte-succes">Élément supprimé.</div>';
         }
     }
 }
 
 if (isset($_GET['succes'])) {
-    $alerte = '<div role="alert" class="alerte alerte-succes">Modifications enregistrées.</div>';
+    $alerte = '<div role="status" class="alerte alerte-succes">Modifications enregistrées.</div>';
 }
 
 $intro     = [];

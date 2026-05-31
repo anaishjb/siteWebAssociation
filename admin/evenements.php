@@ -39,13 +39,13 @@ if (!$erreur && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
-            $alerte = '<div role="alert" class="alerte alerte-succes">Événement supprimé.</div>';
+            $alerte = '<div role="status" class="alerte alerte-succes">Événement supprimé.</div>';
         }
     }
 }
 
 if (isset($_GET['succes'])) {
-    $alerte = '<div role="alert" class="alerte alerte-succes">Événement enregistré avec succès.</div>';
+    $alerte = '<div role="status" class="alerte alerte-succes">Événement enregistré avec succès.</div>';
 }
 
 $evenements = [];

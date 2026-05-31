@@ -26,7 +26,7 @@ require_once 'includes/header.php';
   <ol>
     <li><a href="index.php">Accueil</a></li>
     <li><a href="evenements.php">Événements</a></li>
-    <li aria-current="page">Événements passés</li>
+    <li aria-current="page">Passés</li>
   </ol>
 </nav>
 
@@ -49,7 +49,7 @@ require_once 'includes/header.php';
 
   <section class="section" aria-labelledby="titre-evenements-passes">
     <div class="container">
-      <h2 id="titre-evenements-passes" class="sr-only">Liste des événements passés</h2>
+      <h2 id="titre-evenements-passes">Liste des événements passés</h2>
 
       <?php if (empty($evenements)): ?>
         <p class="aucun-evenement">Aucun événement passé pour le moment.</p>
@@ -65,7 +65,7 @@ require_once 'includes/header.php';
             aria-controls="grille-passes"
             aria-label="Rechercher un événement passé"
           />
-          <p class="recherche-compteur" id="compteur-passes" aria-live="polite"></p>
+          <p class="recherche-compteur" id="compteur-passes" aria-live="polite" aria-atomic="true"></p>
         </div>
 
         <div class="grille-evenements" id="grille-passes">

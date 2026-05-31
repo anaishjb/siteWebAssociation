@@ -3,7 +3,7 @@
 // $titrePage       — titre affiché dans l'onglet du navigateur
 // $cssFile         — chemin vers la feuille de style (ex. "style.css")
 // $metaDescription — description pour les moteurs de recherche
-// $navActive       — identifiant du lien actif : 'accueil' | 'qui' | 'evenements' | 'actions' | 'contact' | 'don'
+// $navActive       — identifiant du lien actif : 'accueil' | 'qui' | 'poles' | 'evenements' | 'evenements-passes' | 'prochain-evenement' | 'actions' | 'missions' | 'partenaires' | 'contact' | 'don'
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -39,22 +39,34 @@
               Accueil
             </a>
           </li>
-          <li>
-            <a href="QuiSommesNs.html" <?= $navActive === 'qui' ? 'class="active" aria-current="page"' : '' ?>>
+          <li class="has-submenu">
+            <?php
+              $sousQui    = ['poles'];
+              $quiActif   = $navActive === 'qui';
+              $sousQuiActif = in_array($navActive, $sousQui);
+            ?>
+            <a href="QuiSommesNs.html"
+               <?= $quiActif ? 'class="active" aria-current="page"' : ($sousQuiActif ? 'class="active"' : '') ?>>
               Qui sommes nous
             </a>
+            <ul class="submenu">
+              <li>
+                <a href="poles.php" <?= $navActive === 'poles' ? 'aria-current="page"' : '' ?>>
+                  Pôles sportifs
+                </a>
+              </li>
+            </ul>
           </li>
-          <li class="<?= empty($sansSubmenu) ? 'has-submenu' : '' ?>">
+          <li class="has-submenu">
             <?php
-              $sousEvenements = ['evenements-passes', 'prochain-evenement'];
+              $sousEvenements  = ['evenements-passes', 'prochain-evenement'];
               $evenementsActif = $navActive === 'evenements';
-              $sousPageActive  = in_array($navActive, $sousEvenements);
+              $sousEvActif     = in_array($navActive, $sousEvenements);
             ?>
             <a href="evenements.php"
-               <?= $evenementsActif ? 'class="active" aria-current="page"' : ($sousPageActive ? 'class="active"' : '') ?>>
+               <?= $evenementsActif ? 'class="active" aria-current="page"' : ($sousEvActif ? 'class="active"' : '') ?>>
               Événements
             </a>
-            <?php if (empty($sansSubmenu)): ?>
             <ul class="submenu">
               <li>
                 <a href="evenements-passes.php" <?= $navActive === 'evenements-passes' ? 'aria-current="page"' : '' ?>>
@@ -67,12 +79,29 @@
                 </a>
               </li>
             </ul>
-            <?php endif; ?>
           </li>
-          <li>
-            <a href="actions_solidaires.html" <?= $navActive === 'actions' ? 'class="active" aria-current="page"' : '' ?>>
+          <li class="has-submenu">
+            <?php
+              $sousActions    = ['missions', 'partenaires'];
+              $actionsActif   = $navActive === 'actions';
+              $sousActActif   = in_array($navActive, $sousActions);
+            ?>
+            <a href="actions_solidaires.html"
+               <?= $actionsActif ? 'class="active" aria-current="page"' : ($sousActActif ? 'class="active"' : '') ?>>
               Actions solidaires
             </a>
+            <ul class="submenu">
+              <li>
+                <a href="missions.php" <?= $navActive === 'missions' ? 'aria-current="page"' : '' ?>>
+                  Missions
+                </a>
+              </li>
+              <li>
+                <a href="partenaires.php" <?= $navActive === 'partenaires' ? 'aria-current="page"' : '' ?>>
+                  Partenaires
+                </a>
+              </li>
+            </ul>
           </li>
           <li>
             <a href="contact.php" <?= $navActive === 'contact' ? 'class="active" aria-current="page"' : '' ?>>

@@ -5,8 +5,7 @@ require_once 'includes/helpers.php';
 $titrePage       = 'Nos missions';
 $cssFile         = 'missions.css';
 $metaDescription = 'Nos missions solidaires — LDS Association';
-$navActive       = 'actions';
-$sansSubmenu     = true;
+$navActive       = 'missions';
 
 try {
     $bdd = connecterBDD();
@@ -28,7 +27,7 @@ require_once 'includes/header.php';
   <ol>
     <li><a href="index.php">Accueil</a></li>
     <li><a href="actions_solidaires.html">Actions solidaires</a></li>
-    <li aria-current="page">Nos missions</li>
+    <li aria-current="page">Missions</li>
   </ol>
 </nav>
 
