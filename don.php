@@ -26,38 +26,17 @@ require_once 'includes/header.php';
 
       <div class="don-options" aria-labelledby="titre-comment">
 
-        <article class="don-option">
-          <h3>Don en espèces</h3>
-          <p>
-            Vous pouvez remettre votre don directement à nos bénévoles lors de nos événements
-            ou à notre siège associatif. Un reçu vous est remis sur demande.
-          </p>
-          <p>
-            <strong>Adresse :</strong><br />
-            5 rue Nicolas Copernic<br />
-            93290 Tremblay-en-France
-          </p>
-        </article>
+        
 
-        <article class="don-option">
-          <h3>Don lors d'un événement</h3>
-          <p>
-            Chacun de nos événements sportifs est une occasion de contribuer directement.
-            Les inscriptions et les collectes réalisées sur place sont intégralement reversées
-            à nos actions solidaires.
-          </p>
-          <a href="evenements.php" class="btn-primary btn-option">
-            Voir nos événements
-          </a>
-        </article>
+        
 
         <article class="don-option don-option-paypal">
           <h3>Don en ligne — PayPal</h3>
           <p>
             Vous pouvez effectuer un don sécurisé en ligne via PayPal.
-            Aucun compte PayPal n'est nécessaire : vous pouvez payer par carte bancaire.
+            
           </p>
-          <a href="https://www.paypal.me/LIEN_PAYPAL_ICI"
+          <a href="https://www.paypal.com/paypalme/ldsassoc"
              class="btn-primary btn-option btn-paypal"
              target="_blank"
              rel="noopener noreferrer"
@@ -70,7 +49,7 @@ require_once 'includes/header.php';
           <h3>Don matériel</h3>
           <p>
             Vêtements, produits d'hygiène, fournitures scolaires, denrées alimentaires non périssables…
-            Vos dons en nature sont les bienvenus. Contactez-nous pour organiser une remise.
+            Vos dons sont les bienvenus. Contactez-nous pour organiser une remise.
           </p>
           <a href="contact.php" class="btn-primary btn-option">
             Nous contacter

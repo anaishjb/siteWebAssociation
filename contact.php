@@ -99,12 +99,14 @@ require_once 'includes/header.php';
   <section class="section">
     <div class="container">
 
-      <h1>Nous contacter</h1>
+      <div class="contact-intro">
+        <h1>Nous contacter</h1>
 
-      <p class="texte-intro">
-        Vous avez une question, souhaitez rejoindre notre équipe de bénévoles ou proposer un partenariat ?
-        Remplissez ce formulaire, nous vous répondrons dans les plus brefs délais.
-      </p>
+        <p class="texte-intro">
+          Vous avez une question, souhaitez rejoindre notre équipe de bénévoles ou proposer un partenariat ?
+          Remplissez ce formulaire, nous vous répondrons dans les plus brefs délais.
+        </p>
+      </div>
 
       <?php if (!empty($erreurs['global'])): ?>
       <div role="alert" class="alerte alerte-erreur" aria-live="assertive">

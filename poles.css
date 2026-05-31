@@ -283,6 +283,10 @@ body.font-georgia {
   padding: 3.5rem 0;
 }
 
+.intro-section h1 {
+  text-align: center;
+}
+
 .intro-box {
   max-width: 850px;
   margin: 0 auto;

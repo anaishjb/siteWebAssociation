@@ -570,8 +570,12 @@ h2 {
 }
 
 /* Formulaire de contact */
+.contact-intro,
+.mention-obligatoire,
 .formulaire-contact {
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Section coordonnées / devenir partenaire */

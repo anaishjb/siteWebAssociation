@@ -51,8 +51,8 @@
             </a>
             <ul class="submenu">
               <li>
-                <a href="poles.php" <?= $navActive === 'poles' ? 'aria-current="page"' : '' ?>>
-                  Pôles sportifs
+                <a href="poles.html" <?= $navActive === 'poles' ? 'aria-current="page"' : '' ?>>
+                  Pôles
                 </a>
               </li>
             </ul>
